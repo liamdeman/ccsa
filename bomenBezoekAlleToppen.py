@@ -31,12 +31,25 @@ boom7.kinderen = [boom8, boom9]
 boom9.kinderen = [boom10]
 
 def preOrde(wortel):
-    recursieStap(wortel)
+    print('preOrde')
+    recursieStapPreOrde(wortel)
 
-def recursieStap(boom):
+def recursieStapPreOrde(boom):
     boom.visit()
     for kind in boom.kinderen:
-        recursieStap(kind)
+        recursieStapPreOrde(kind)
+
+def postOrde(wortel):
+    print('postOrde')
+    recursieStapPostOrde(wortel)
+
+def recursieStapPostOrde(boom):
+    for kind in boom.kinderen:
+        recursieStapPostOrde(kind)
+    boom.visit()
+
+
     
 
 preOrde(boom1)
+postOrde(boom1)
