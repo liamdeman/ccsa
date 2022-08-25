@@ -1,4 +1,3 @@
-#75 Algoritme 4.1 Doorlopen van een boom in preorde
 class Boom:
     kinderen = []
     def __init__(self, id):
@@ -30,13 +29,15 @@ boom7.kinderen = [boom8, boom9]
 
 boom9.kinderen = [boom10]
 
-def preOrde(wortel):
-    recursieStap(wortel)
+def aantalToppen(wortel):
+    print(recursieStap(wortel))
 
 def recursieStap(boom):
-    boom.visit()
+    aantal = 1
     for kind in boom.kinderen:
-        recursieStap(kind)
+        aantal = aantal + recursieStap(kind)
+
+    return aantal
     
 
-preOrde(boom1)
+aantalToppen(boom1)

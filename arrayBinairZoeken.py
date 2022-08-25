@@ -1,4 +1,4 @@
-#binary search array with iterator
+#p6 Algoritme 1.2 Binair zoeken in een array geïmplementeerd m.b.v. iteratie
 def binarySearch(target, sortedArray):
     l = 0
     r = len(sortedArray) -1
