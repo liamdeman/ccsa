@@ -1,4 +1,4 @@
-#sequential search array
+#p3 Algoritme 1.1 Sequentieel zoeken in een array
 def seqSearch(item, list):
     #set index
     i = 0

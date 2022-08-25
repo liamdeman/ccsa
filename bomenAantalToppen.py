@@ -1,3 +1,4 @@
+#p77 Algoritme 4.2 Berekenen van aantal toppen van een boom
 class Boom:
     kinderen = []
     def __init__(self, id):
