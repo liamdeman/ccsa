@@ -1,0 +1,63 @@
+class BinaryHeap:
+    def __init__(self, max_size=10):
+        self.max = 10
+        self.arr = [None]*max_size
+        self.nb = 0
+
+    def empty(self):
+        return self.nb == 0
+
+    def get_min_element(self):
+        if self.empty():
+            return None
+        return self.arr[0]
+
+    def insert_elem(self, item):
+        assert self.nb == self.max, "vol"
+        index = self.nb
+        #zet item op index
+        self.arr[index] == item
+        #zoek index ouder
+        ouderIndex = (index-1)//2
+        #check of index volgorde juist is
+        while index > 0 and self.arr[index] < self.arr[ouderIndex]:
+            temp = self.arr[index]
+            self.arr[index] = self.arr[ouderIndex]
+            self.arr[ouderIndex] = temp
+            index = ouderIndex
+            ouderIndex = (index-1)//2
+        self.nb += 1
+
+    def remove_min_elem(self):
+        assert not self.empty(), "no min element"
+        result = self.arr[0]
+        self.arr[0] = self.arr[self.nb-1]
+        self.nb -= 1
+        index = 0
+        l = 2*index+1
+        r = 2*index+2
+        while (l < self.nb and self.arr[l] < self.arr[index]) or (r < self.nb and self.arr[r] < self.arr[index]):
+            if(self.arr[l] < self.arr[r]): #wissel met links
+                temp = self.arr[index]
+                self.arr[index] = self.arr[l]
+                self.arr[l] = temp
+                index = l
+            else: #rechts
+                temp = self.arr[index]
+                self.arr[index] = self.arr[r]
+                self.arr[r] = temp
+                index = r
+            l = 2*index+1
+            r = 2*index+2
+
+        return result
+
+    def __str__(self):
+        s = "["
+        for i in range(self.nb):
+            s += self.arr[i] + ", "
+        #s = s[:-2]
+        s += "]"
+        return s
+
+
